@@ -1,5 +1,5 @@
 """
-Test for recipe API's.
+Tests for recipe API's.
 """
 from decimal import Decimal
 
@@ -43,7 +43,7 @@ def create_recipe(user, **params):
 
 def create_user(**params):
     """Create and return a new user."""
-    return get_user_model.objects.create_user(**params)
+    return get_user_model().objects.create_user(**params)
 
 
 class PublicRecipeAPITests(TestCase):
@@ -57,7 +57,6 @@ class PublicRecipeAPITests(TestCase):
         res = self.client.get(RECIPES_URL)
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
-
 
 
 class PrivateRecipeApiTests(TestCase):
@@ -111,7 +110,7 @@ class PrivateRecipeApiTests(TestCase):
         payload = {
             'title': 'Sample recipe',
             'time_minutes': 30,
-            'price': Decimal('5.00'),
+            'price': Decimal('5.99'),
         }
         res = self.client.post(RECIPES_URL, payload)
 
@@ -144,8 +143,8 @@ class PrivateRecipeApiTests(TestCase):
         recipe = create_recipe(
             user=self.user,
             title='Sample recipe title',
-            link='https//example.com/recipe.pdf',
-            description='Sample recipe description.'
+            link='https://example.com/recipe.pdf',
+            description='Sample recipe description.',
         )
 
         payload = {
