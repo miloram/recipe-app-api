@@ -31,14 +31,14 @@ class PublicTagsApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    def test_auth_require(self):
+    def test_auth_required(self):
         """Test auth is requiered for retrieving tags."""
         res = self.client.get(TAGS_URL)
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
-class PrivateTagsAPITests(TestCase):
+class PrivateTagsApiTests(TestCase):
     """Test authenticated API requests."""
 
     def setUp(self):
