@@ -43,7 +43,6 @@ class RecipeSerializers(serializers.ModelSerializer):
         recipe = Recipe.objects.create(**validated_data)
         self._get_or_create_tags(tags, recipe)
 
-
         return recipe
 
     def update(self, instance, validated_data):
@@ -61,6 +60,7 @@ class RecipeSerializers(serializers.ModelSerializer):
 
 class RecipeDetailSerializer(RecipeSerializers):
     """Serializer for recipe detail view."""
+
 
     class Meta(RecipeSerializers.Meta):
         fields = RecipeSerializers.Meta.fields + ['description']
