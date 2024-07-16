@@ -46,7 +46,7 @@ class RecipeSerializers(serializers.ModelSerializer):
 
         return recipe
 
-    def updtate(self, instance, validated_data):
+    def update(self, instance, validated_data):
         """Update recipe."""
         tags = validated_data.pop('tags', None)
         if tags is not None:
@@ -64,4 +64,3 @@ class RecipeDetailSerializer(RecipeSerializers):
 
     class Meta(RecipeSerializers.Meta):
         fields = RecipeSerializers.Meta.fields + ['description']
-
