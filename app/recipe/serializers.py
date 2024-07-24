@@ -18,6 +18,7 @@ class IngredientSerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
         read_only_fields = ['id']
 
+
 class TagSerializer(serializers.ModelSerializer):
     """Serializer for tags"""
 
@@ -87,13 +88,12 @@ class RecipeSerializers(serializers.ModelSerializer):
         instance.save()
         return instance
 
+
 class RecipeDetailSerializer(RecipeSerializers):
     """Serializer for recipe detail view."""
 
-
     class Meta(RecipeSerializers.Meta):
         fields = RecipeSerializers.Meta.fields + ['description', 'image']
-
 
 
 class RecipeImageSerializer(serializers.ModelSerializer):

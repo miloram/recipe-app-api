@@ -99,7 +99,6 @@ class PrivateTagsApiTests(TestCase):
         tags = Tag.objects.filter(user=self.user)
         self.assertFalse(tags.exists())
 
-
     def test_filter_tags_assigned_to_recipes(self):
         """Test listing tags to those assigned to recipes."""
         tag1 = Tag.objects.create(user=self.user, name='Breakfast')
@@ -141,4 +140,3 @@ class PrivateTagsApiTests(TestCase):
         res = self.client.get(TAGS_URL, {'assigned_only': 1})
 
         self.assertEqual(len(res.data), 1)
-        

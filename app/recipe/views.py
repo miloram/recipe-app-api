@@ -1,7 +1,7 @@
 """
 Views for the recipe APIs.
 """
-from drf_spectacular.utils import(
+from drf_spectacular.utils import (
     extend_schema_view,
     extend_schema,
     OpenApiParameter,
@@ -36,7 +36,8 @@ from recipe import serializers
             OpenApiParameter(
                 'ingredients',
                 OpenApiTypes.STR,
-                description='Comma separated list of ingredients IDs to filter',
+                description=
+                'Comma separated list of ingredients IDs to filter',
             )
         ]
     )
